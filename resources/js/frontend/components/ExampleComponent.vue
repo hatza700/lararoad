@@ -41,7 +41,13 @@
                     });
 
                 */
-                vm.list.push(imageFiles[this.page]);
+                var n;
+                if (Array.isArray(imageFiles)) {
+                    n = imageFiles.length+1;
+                } else {
+                    n = _.size(imageFiles);
+                }
+                vm.list.push(imageFiles[n-this.page]);
                 $state.loaded();
                 this.page = this.page + 1;
             },

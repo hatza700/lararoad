@@ -8,7 +8,7 @@
               <div v-for="item in list">
                 <img v-bind:src="'/'+item" style="width:100%"></img>
               </div>
-              <infinite-loading @distance="1" @infinite="infiniteHandler"></infinite-loading>
+              <infinite-loading @distance="10" @infinite="infiniteHandler"></infinite-loading>
 
             </div>
         </div>
@@ -43,11 +43,11 @@
                 */
                 var n;
                 if (Array.isArray(imageFiles)) {
-                    n = imageFiles.length;
+                    n = imageFiles.length+1;
                 } else {
                     n = _.size(imageFiles);
                 }
-                vm.list.push(imageFiles[n-this.page+1]);
+                vm.list.push(imageFiles[n-this.page]);
                 $state.loaded();
                 this.page = this.page + 1;
             },
