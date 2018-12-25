@@ -5,9 +5,9 @@
         </div>
         <div class="card-body" style="overflow:auto; max-height:1000px">
             <div>
-              <p v-for="item in list">
+              <div v-for="item in list">
                 <img v-bind:src="'/'+item" style="width:100%"></img>
-              </p>
+              </div>
               <infinite-loading @distance="1" @infinite="infiniteHandler"></infinite-loading>
 
             </div>
@@ -41,7 +41,13 @@
                     });
 
                 */
-                vm.list.push(imageFiles[this.page]);
+                var n;
+                if (Array.isArray(imageFiles)) {
+                    n = imageFiles.length;
+                } else {
+                    n = _.size(imageFiles);
+                }
+                vm.list.push(imageFiles[n-this.page+1]);
                 $state.loaded();
                 this.page = this.page + 1;
             },
