@@ -6,7 +6,7 @@
         <div class="card-body" style="overflow:auto; max-height:1000px">
             <div>
               <p v-for="item in list">
-                <img v-bind:src="'http://localhost/laravel-5-boilerplate-master/public/'+item" style="width:100%"></img>
+                <img v-bind:src="'/'+item" style="width:100%"></img>
               </p>
               <infinite-loading @distance="1" @infinite="infiniteHandler"></infinite-loading>
 
