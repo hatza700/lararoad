@@ -24,7 +24,7 @@
                                     <div class="form-group">
                                         {{ html()->label(__('Tên quốc lộ'))->for('quoc_lo') }}
 
-                                        {{ html()->select('quoc_lo', ['1' => 'Quốc lộ 1', '2' => 'Quốc lộ 2'], 2)
+                                        {{ html()->select('quoc_lo', ['1' => 'Quốc lộ 1', '020' => 'Quốc lộ 2'], $road['ma_tuyen_duong'])
                                             ->class('form-control') }}
                                     </div><!--form-group-->
                                 </div><!--col-->
@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         {{ html()->label(__('Thư mục dữ liệu đoạn phân tích'))->for('thu_muc_du_lieu') }}
 
-                                        {{ html()->select('thu_muc_du_lieu', ['1' => 'RMD_002000_01_20161104_123558_result5'], 1)
+                                        {{ html()->select('thu_muc_du_lieu', $directories, $folderKey)
                                             ->class('form-control') }}
                                     </div><!--form-group-->
                                 </div><!--col-->
@@ -48,11 +48,11 @@
                         <div class="card-body">
                             <p class="card-text">
                                 <small>
-                                    <i class="fas fa-envelope"></i> Chiều đường:  Phải<br/>
-                                    <i class="fas fa-envelope"></i> Mã làn đường: P1<br/>
-                                    <i class="fas fa-envelope"></i> Chiều dài đoạn: 450m<br/>
+                                    <i class="fas fa-envelope"></i> Chiều đường:  {{ $road['chieu_duong'] == 0 ? "Phải" : "Trái" }}<br/>
+                                    <i class="fas fa-envelope"></i> Mã làn đường: {{ $road['ma_thu_tu_lan'] }}<br/>
+                                    <i class="fas fa-envelope"></i> Chiều dài đoạn: {{ $road['chieu_dai'].' km' }}<br/>
                                     <i class="fas fa-envelope"></i> Tổng số ảnh: 300 ảnh<br/>
-                                    <i class="fas fa-envelope"></i> Năm khảo sát TTMĐ: 2016<br/>
+                                    <i class="fas fa-envelope"></i> Năm khảo sát TTMĐ: {{ $road['nam_khao_sat'] }}<br/>
                                 </small>
                             </p>                            
                         </div>

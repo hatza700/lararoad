@@ -2,9 +2,6 @@
 
 @section('title', app_name() . ' | ' . __('labels.backend.access.users.management'))
 
-@section('breadcrumb-links')
-    @include('backend.auth.user.includes.breadcrumb-links')
-@endsection
 
 @section('content')
 <div class="card">
@@ -41,7 +38,7 @@
                                 <td>{{ $road['chieu_duong'] == 0 ? "Phải" : "Trái" }}</td>
                                 <td>{{ $road['ma_thu_tu_lan'] }}</td>
                                 <td>{{ $road['chieu_dai'].' km' }}</td>
-                                <td></td>
+                                <td>{!! $road['action_buttons'] !!}</td>
                             </tr>
                             @endforeach
                         </tbody>
