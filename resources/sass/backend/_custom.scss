@@ -7,3 +7,13 @@
     padding-top: map-get($spacers, 3);
     padding-bottom: map-get($spacers, 3);
 }
+
+.img-container a.btn:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 255, 0, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(255, 255, 0, 0.5);
+}
+
+.img-container a.btn.is_cracked {
+	  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
+}
