@@ -26,11 +26,12 @@ class DashboardController extends Controller
         $directory = "/public/Tasks/";
         //$files = Storage::files($directory);
         $directories = Storage::directories($directory);
+        $fl_array = array();
         foreach ($directories as $key => $fol) {
             $items = explode('_', $fol);
             $folder_names = explode('/', $fol, 3);
             $directories[$key] = $folder_names[2];
-            if ($folder_names[2] === $folder || $key == count($directories)-1) {
+            if ($folder_names[2] === $folder || ($key == count($directories)-1 && empty($fl_array))) {
                 $files = Storage::files($fol);
                 $fl_array = preg_grep("/[.](jpg|JPG|JPEG)$/", $files);
                 $folder = $fol;
@@ -97,11 +98,12 @@ class DashboardController extends Controller
         $directory = "/public/Tasks/";
         //$files = Storage::files($directory);
         $directories = Storage::directories($directory);
+        $fl_array = array();
         foreach ($directories as $key => $fol) {
             $items = explode('_', $fol);
             $folder_names = explode('/', $fol, 3);
             $directories[$key] = $folder_names[2];
-            if ($folder_names[2] == $folder || $key == count($directories)-1) {
+            if ($folder_names[2] === $folder || ($key == count($directories)-1 && empty($fl_array))) {
                 $files = Storage::files($fol);
                 $fl_array = preg_grep("/[.](jpg|JPG|JPEG)$/", $files);
                 $folder = $fol;
