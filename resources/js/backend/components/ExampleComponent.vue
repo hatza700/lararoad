@@ -8,126 +8,126 @@
               <div v-for="item in list">
                 <div class="container img-container" v-bind:style="{ backgroundImage: 'url(/' + item.img_url + ')', backgroundSize: 'auto 100%', backgroundRepeat: 'no-repeat' }">
                   <div class="row">
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[0]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[1]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[2]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[3]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[4]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[5]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[6]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[7]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[8]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[9]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[10]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[11]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[12]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[13]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[14]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[15]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[16]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[17]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[18]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[19]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[20]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[21]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[22]}]" style="padding-bottom:100%">
                             
                         </a>
                     </div>
-                    <div class="col-sm p-0">
+                    <div class="col-sm p-1">
                         <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': item.crack_matrix[23]}]" style="padding-bottom:100%">
                             
                         </a>
