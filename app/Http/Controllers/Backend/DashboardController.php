@@ -30,7 +30,7 @@ class DashboardController extends Controller
             $items = explode('_', $fol);
             $folder_names = explode('/', $fol, 3);
             $directories[$key] = $folder_names[2];
-            if ($folder_names[2] == $folder || $key == count($directories)-1) {
+            if ($folder_names[2] === $folder || $key == count($directories)-1) {
                 $files = Storage::files($fol);
                 $fl_array = preg_grep("/[.](jpg|JPG|JPEG)$/", $files);
                 $folder = $fol;
