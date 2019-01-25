@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Storage;
+use ZipArchive;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
@@ -21,10 +22,24 @@ class DashboardController extends Controller
         return view('backend.dashboard');
     }
 
-    public function phanTichMoi(string $folder = "")
+    public function phanTichMoi(Request $request, string $folder = "")
     {
         $directory = "/public/Tasks/";
-        //$files = Storage::files($directory);
+        
+        if ($request->has('images_location')) {
+            $zip_file = $request->file('images_location');            
+            $zip_file_path = public_path("storage/".$zip_file->store('/Tasks', 'public'));
+            $zip = new ZipArchive;
+            $is_open = $zip->open($zip_file_path);            
+            if ($is_open === true) {
+                $destination = storage_path("app/".$directory);
+                $zip->extractTo($destination);
+                $zip->close();
+                $folder = str_replace(".zip", "", $zip_file->getClientOriginalName());
+                return redirect()->route('admin.thuc-hien-phan-tich', ['folder' => $folder]);
+            }
+        } 
+
         $directories = Storage::directories($directory);
         $fl_array = array();
         foreach ($directories as $key => $fol) {
@@ -38,6 +53,7 @@ class DashboardController extends Controller
                 $folder_key = $key;
             }
         }
+
         $ii = 0;
         $fl_array1 = array();
         foreach ($fl_array as $key => $value) {
@@ -99,6 +115,7 @@ class DashboardController extends Controller
         //$files = Storage::files($directory);
         $directories = Storage::directories($directory);
         $fl_array = array();
+        $folder1 = $folder;
         foreach ($directories as $key => $fol) {
             $items = explode('_', $fol);
             $folder_names = explode('/', $fol, 3);
@@ -117,7 +134,7 @@ class DashboardController extends Controller
             $ii++;
         }
 
-        $process = new Process('python ../crack_predict.py --model ../ml_model/Model_new_5.h5 --image_path '.str_replace("public/", "storage/", $folder));
+        $process = new Process('python ../crack_predict2.py --model ../ml_model/Model_new_5.h5 --image_path '.str_replace("public/", "storage/", $folder));
         $process->setTimeout(36000);
         $process->run();
         if (!$process->isSuccessful()) {
@@ -125,26 +142,7 @@ class DashboardController extends Controller
         }
         echo $process->getOutput();
 
-        $fl_array = $fl_array1;
-        $roads = array();
-        $road['ma_loai_duong'] = substr($items[1], 0, 1);
-        $road['ma_tuyen_duong'] = substr($items[1], 1, 3);
-        $road['ma_tuyen_nhanh'] = substr($items[1], 4, 2);
-        $road['ma_thu_tu_lan'] = substr($items[2], 0);
-        $road['nam_khao_sat'] = substr($items[3], 0, 4);
-        $kp_contents = Storage::get($folder.'/'.'KP_LIST.CSV');
-        $lines = explode(PHP_EOL, $kp_contents);
-        $csv1 = str_getcsv($lines[0]);
-        $csv2 = str_getcsv($lines[1]);
-        $arr = array_combine($csv1, $csv2);
-        $road['chieu_duong'] = $arr['UpDown'];
-        $road['chieu_dai'] = $arr['To']-$arr['From'];
-        
-        return view('backend.phan-tich-moi')
-            ->withRoad($road)
-            ->withDirectories($directories)
-            ->withFolderKey($folder_key)
-            ->withImageFiles($fl_array);
+        return redirect()->route('admin.phan-tich-moi', ['folder' => $folder1]);
     }
 
 

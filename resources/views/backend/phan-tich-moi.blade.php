@@ -19,6 +19,7 @@
                     <div class="card mb-4">
                         <div class="card-header">Lựa chọn đoạn khảo sát</div>
                         <div class="card-body">
+                            {{ html()->form('POST', route('admin.phan-tich-moi'))->attribute('enctype', 'multipart/form-data')->open() }}
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
@@ -37,9 +38,19 @@
 
                                         {{ html()->select('thu_muc_du_lieu', $directories, $folderKey)
                                             ->class('form-control') }}
+                                            <br/>
+
+                                        {{ html()->file('images_location')->accept("application/zip")->class('form-control') }}
                                     </div><!--form-group-->
                                 </div><!--col-->
                             </div><!--row-->
+
+                            <div class="row">
+                                <div class="col">
+                                    {{ html()->button('Thực hiện phân tích tự động')->type('submit')->class('form-control btn btn-primary btn-block')->style('margin-bottom:4px; white-space: normal;') }}
+                                </div><!--col-->
+                            </div><!--row-->
+                            {{ html()->form()->close() }}
                         </div>
                     </div><!--card-->
 
@@ -57,29 +68,6 @@
                             </p>                            
                         </div>
                     </div>
-
-                    <div class="card mb-4">
-                        <div class="card-header">Phân tích phát hiện nứt mặt đường</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        {{ html()->label(__('Kích thước ô lưới'))->for('kich_thuoc_luoi') }}
-
-                                        {{ html()->select('kich_thuoc_luoi', ['1' => '100px x 100px', '2' => '250px x 250px'], 2)
-                                            ->class('form-control') }}
-                                    </div><!--form-group-->
-                                </div><!--col-->
-                            </div><!--row-->
-                            <div class="row">
-                                <div class="col">
-                                    <a href="{{ route('frontend.user.account')}}" class="btn btn-primary btn-block" style="margin-bottom:4px;white-space: normal;">
-                                        @lang('Thực hiện phân tích tự động')
-                                    </a>
-                                </div><!--col-->
-                            </div><!--row-->
-                        </div>
-                    </div><!--card-->
                 </div><!--col-md-4-->
 
                 <div id="app" class="col-md-8 order-2 order-sm-2">
