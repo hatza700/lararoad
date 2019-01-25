@@ -92,7 +92,7 @@ tile_width = 100
 model = load_model(args["model"])
 
 
-plot_model(model, to_file='model.png')
+#plot_model(model, to_file='model.png')
 
 
 err = 1
