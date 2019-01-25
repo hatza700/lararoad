@@ -134,7 +134,7 @@ class DashboardController extends Controller
             $ii++;
         }
 
-        $process = new Process('python ../crack_predict2.py --model ../ml_model/Model_new_5.h5 --image_path '.str_replace("public/", "storage/", $folder));
+        $process = new Process('python ../crack_predict3.py --model ../ml_model/Model_new_5.h5 --image_path '.str_replace("public/", "storage/", $folder));
         $process->setTimeout(36000);
         $process->run();
         if (!$process->isSuccessful()) {

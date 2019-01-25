@@ -47,7 +47,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    {{ html()->button('Thực hiện phân tích tự động')->type('submit')->class('form-control btn btn-primary btn-block')->style('margin-bottom:4px; white-space: normal;') }}
+                                    {{ html()->button('Thực hiện phân tích tự động')->type('submit')->class('btn btn-primary btn-block')->style('margin-bottom:4px; white-space: normal;') }}
                                 </div><!--col-->
                             </div><!--row-->
                             {{ html()->form()->close() }}
