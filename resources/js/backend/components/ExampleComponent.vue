@@ -9,126 +9,126 @@
                 <div class="container img-container p-0" v-bind:style="{ backgroundImage: 'url(/' + item.img_url + ')', backgroundSize: 'auto 100%', backgroundRepeat: 'no-repeat' }">
                   <div class="row m-0">
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][0] >= 21), 'is_cracked2': (item.crack_matrix[0][0]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][0] >= 32), 'is_cracked2': (item.crack_matrix[0][0]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][1] >= 21), 'is_cracked2': (item.crack_matrix[0][1]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][1] >= 32), 'is_cracked2': (item.crack_matrix[0][1]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][2] >= 21), 'is_cracked2': (item.crack_matrix[0][2]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][2] >= 32), 'is_cracked2': (item.crack_matrix[0][2]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][3] >= 21), 'is_cracked2': (item.crack_matrix[0][3]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][3] >= 32), 'is_cracked2': (item.crack_matrix[0][3]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][4] >= 21), 'is_cracked2': (item.crack_matrix[0][4]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][4] >= 32), 'is_cracked2': (item.crack_matrix[0][4]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][5] >= 21), 'is_cracked2': (item.crack_matrix[0][5]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][5] >= 32), 'is_cracked2': (item.crack_matrix[0][5]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][6] >= 21), 'is_cracked2': (item.crack_matrix[0][6]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][6] >= 32), 'is_cracked2': (item.crack_matrix[0][6]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][7] >= 21), 'is_cracked2': (item.crack_matrix[0][7]>=61)}]" style="padding-bottom:98%">
-                            
-                        </a>
-                    </div>
-                  </div>
-                  <div class="row m-0">
-                    <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][0] >= 21), 'is_cracked2': (item.crack_matrix[1][0]>=61)}]" style="padding-bottom:98%">
-                            
-                        </a>
-                    </div>
-                    <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][1] >= 21), 'is_cracked2': (item.crack_matrix[1][1]>=61)}]" style="padding-bottom:98%">
-                            
-                        </a>
-                    </div>
-                    <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][2] >= 21), 'is_cracked2': (item.crack_matrix[1][2]>=61)}]" style="padding-bottom:98%">
-                            
-                        </a>
-                    </div>
-                    <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][3] >= 21), 'is_cracked2': (item.crack_matrix[1][3]>=61)}]" style="padding-bottom:98%">
-                            
-                        </a>
-                    </div>
-                    <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][4] >= 21), 'is_cracked2': (item.crack_matrix[1][4]>=61)}]" style="padding-bottom:98%">
-                            
-                        </a>
-                    </div>
-                    <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][5] >= 21), 'is_cracked2': (item.crack_matrix[1][5]>=61)}]" style="padding-bottom:98%">
-                            
-                        </a>
-                    </div>
-                    <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][6] >= 21), 'is_cracked2': (item.crack_matrix[1][6]>=61)}]" style="padding-bottom:98%">
-                            
-                        </a>
-                    </div>
-                    <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][7] >= 21), 'is_cracked2': (item.crack_matrix[1][7]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[0][7] >= 32), 'is_cracked2': (item.crack_matrix[0][7]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                   </div>
                   <div class="row m-0">
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][0] >= 21), 'is_cracked2': (item.crack_matrix[2][0]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][0] >= 32), 'is_cracked2': (item.crack_matrix[1][0]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][1] >= 21), 'is_cracked2': (item.crack_matrix[2][1]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][1] >= 32), 'is_cracked2': (item.crack_matrix[1][1]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][2] >= 21), 'is_cracked2': (item.crack_matrix[2][2]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][2] >= 32), 'is_cracked2': (item.crack_matrix[1][2]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][3] >= 21), 'is_cracked2': (item.crack_matrix[2][3]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][3] >= 32), 'is_cracked2': (item.crack_matrix[1][3]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][4] >= 21), 'is_cracked2': (item.crack_matrix[2][4]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][4] >= 32), 'is_cracked2': (item.crack_matrix[1][4]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][5] >= 21), 'is_cracked2': (item.crack_matrix[2][5]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][5] >= 32), 'is_cracked2': (item.crack_matrix[1][5]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][6] >= 21), 'is_cracked2': (item.crack_matrix[2][6]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][6] >= 32), 'is_cracked2': (item.crack_matrix[1][6]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
                     <div class="col-sm p-1">
-                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][7] >= 21), 'is_cracked2': (item.crack_matrix[2][7]>=61)}]" style="padding-bottom:98%">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[1][7] >= 32), 'is_cracked2': (item.crack_matrix[1][7]>=61)}]" style="padding-bottom:98%">
+                            
+                        </a>
+                    </div>
+                  </div>
+                  <div class="row m-0">
+                    <div class="col-sm p-1">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][0] >= 32), 'is_cracked2': (item.crack_matrix[2][0]>=61)}]" style="padding-bottom:98%">
+                            
+                        </a>
+                    </div>
+                    <div class="col-sm p-1">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][1] >= 32), 'is_cracked2': (item.crack_matrix[2][1]>=61)}]" style="padding-bottom:98%">
+                            
+                        </a>
+                    </div>
+                    <div class="col-sm p-1">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][2] >= 32), 'is_cracked2': (item.crack_matrix[2][2]>=61)}]" style="padding-bottom:98%">
+                            
+                        </a>
+                    </div>
+                    <div class="col-sm p-1">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][3] >= 32), 'is_cracked2': (item.crack_matrix[2][3]>=61)}]" style="padding-bottom:98%">
+                            
+                        </a>
+                    </div>
+                    <div class="col-sm p-1">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][4] >= 32), 'is_cracked2': (item.crack_matrix[2][4]>=61)}]" style="padding-bottom:98%">
+                            
+                        </a>
+                    </div>
+                    <div class="col-sm p-1">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][5] >= 32), 'is_cracked2': (item.crack_matrix[2][5]>=61)}]" style="padding-bottom:98%">
+                            
+                        </a>
+                    </div>
+                    <div class="col-sm p-1">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][6] >= 32), 'is_cracked2': (item.crack_matrix[2][6]>=61)}]" style="padding-bottom:98%">
+                            
+                        </a>
+                    </div>
+                    <div class="col-sm p-1">
+                        <a href="#" v-bind:class="['btn', 'rounded-0', 'btn-block', 'pt-0', 'pl-0', 'pr-0', {'is_cracked': (item.crack_matrix[2][7] >= 32), 'is_cracked2': (item.crack_matrix[2][7]>=61)}]" style="padding-bottom:98%">
                             
                         </a>
                     </div>
