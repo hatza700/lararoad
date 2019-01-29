@@ -96,9 +96,12 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <a href="{{ route('frontend.user.account')}}" class="btn btn-primary btn-block" style="margin-bottom:4px;white-space: normal;min-height: 50px">
+                                    {{ html()->form('POST', url()->current())->open() }}
+                                    {{ html()->input()->name('save')->type('hidden')->attribute("id", "savedata") }}
+                                    <button type="submit" class="btn btn-primary btn-block" style="margin-bottom:4px;white-space: normal;min-height: 50px" onclick="return saveModify(this, {{ '"'.strtoupper($directories[$folderKey]).'"' }});">
                                         @lang('Lưu lại xác thực nhận diện vết nứt')
-                                    </a>
+                                    </button>
+                                    {{ html()->form()->close() }}
                                 </div><!--col-->
                             </div><!--row-->
 
@@ -133,3 +136,119 @@
     </div><!--card-->
 
     @endsection
+
+    @push('scripts')
+    <script type="text/javascript">
+        function initMatrix() {
+            return [[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]];
+        }
+
+        function addRed(url, i, j) {
+            var ustore = JSON.parse(sessionStorage.getItem(url));
+            if (!ustore)
+                ustore = initMatrix();
+            ustore[parseInt(i)][parseInt(j)] = 2;
+            sessionStorage.setItem(url, JSON.stringify(ustore));
+            var ustore1 = sessionStorage.getItem(url);
+            console.log(ustore1);
+        }
+
+        function addYellow(url, i, j) {
+            var ustore = JSON.parse(sessionStorage.getItem(url));
+            if (!ustore)
+                ustore = initMatrix();
+            ustore[parseInt(i)][parseInt(j)] = 1;
+            sessionStorage.setItem(url, JSON.stringify(ustore));
+            var ustore1 = sessionStorage.getItem(url);
+            console.log(ustore1);
+        }
+
+        function removeColor(url, i, j) {
+            var ustore = JSON.parse(sessionStorage.getItem(url));
+            if (ustore) {
+                ustore[parseInt(i)][parseInt(j)] = 0;
+                sessionStorage.setItem(url, JSON.stringify(ustore));
+                var ustore1 = sessionStorage.getItem(url);
+                console.log(ustore1);
+            }            
+        }
+
+        function saveModify(btn, folder) {
+            var str = "{";            
+            for(var fname in sessionStorage)
+            {
+                if (folder === fname.substring(0, folder.length)) {
+                    if (str !== "{")
+                        str += ',';
+                    str += '"'+fname+'":'+sessionStorage.getItem(fname);
+                    sessionStorage.removeItem(fname);
+                }
+            }
+            str += '}';
+            document.getElementById("savedata").value = str;
+            return true;
+        }
+
+        function updateLocalMatrix(ele) {
+            var url = ele.getAttribute("name");   
+            var i, childs = ele.children;  
+            var ustore = JSON.parse(sessionStorage.getItem(url));
+            if (!ustore)
+                ustore = initMatrix();          
+            
+            var red = 'rgba(255, 0, 0, 0.1)',
+                red7 = 'rgba(255, 0, 0, 0.7)',
+                white = 'rgba(255, 255, 255, 0)',
+                yellow = 'rgba(255, 255, 0, 0.1)',
+                yellow7 = 'rgba(255, 255, 0, 0.7)';
+
+            for (i = 0; i < childs.length; i++) {
+                var c = childs[i];
+                if (c.nodeName == "rect") {
+                    var fill = c.getAttribute("fill");
+                    if (fill === red) {
+                        ustore[parseInt(c.getAttribute("posi"))][parseInt(c.getAttribute("posj"))] = 2;
+                    } else if (fill === white) {
+                        ustore[parseInt(c.getAttribute("posi"))][parseInt(c.getAttribute("posj"))] = 0;
+                    } else if (fill === yellow) {
+                        ustore[parseInt(c.getAttribute("posi"))][parseInt(c.getAttribute("posj"))] = 1;
+                    }
+                }
+            }
+
+            sessionStorage.setItem(url, JSON.stringify(ustore));
+        }
+
+        function doRectClick(myrect){
+            var fill = myrect.getAttribute("fill");
+            var url = myrect.parentElement.getAttribute("name");
+            var i = myrect.getAttribute("posi"),
+                j = myrect.getAttribute("posj");            
+            //var results = sessionStorage.getItem(url);
+
+            //sessionStorage.setItem(url, "Hello World");
+            
+            var red = 'rgba(255, 0, 0, 0.1)',
+                red7 = 'rgba(255, 0, 0, 0.7)',
+                white = 'rgba(255, 255, 255, 0)',
+                yellow = 'rgba(255, 255, 0, 0.1)',
+                yellow7 = 'rgba(255, 255, 0, 0.7)';
+
+
+            if (fill === red) {
+                myrect.setAttribute("fill", white);
+                myrect.setAttribute("stroke", white);                
+                updateLocalMatrix(myrect.parentElement);
+            } else if (fill === white) {
+                myrect.setAttribute("fill", yellow);
+                myrect.setAttribute("stroke", yellow7);
+                updateLocalMatrix(myrect.parentElement);
+            } else if (fill === yellow) {
+                myrect.setAttribute("fill", red);
+                myrect.setAttribute("stroke", red7);
+                updateLocalMatrix(myrect.parentElement);
+            }
+            //myrect.style.fill = 'rgba(' + r + ', ' + g + ' , ' + b + ', 0.3)';            
+        }
+    </script>
+    @endpush

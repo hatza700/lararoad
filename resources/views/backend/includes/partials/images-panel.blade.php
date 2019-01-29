@@ -63,6 +63,7 @@
                 @php
                     $list = $listArray[$key];
                     $list250 = $list250Array[$key];
+                    $listFix = $listFixArray[$key];
                 @endphp
                 <div class="img-container p-0">
                     <svg viewBox="0 0 100 37.5" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +76,10 @@
                         <rect x="87.5" y="0" width="12.5" height="37.5" fill="white"></rect>
                         <rect width="100%" height="100%" fill="url(#smallGrid)" />
                             @if ($list)
-                              <g>
+                                @php
+                                    $urls = explode('/', $img_url, 3);
+                                @endphp
+                              <g name =  "{{ $urls[2] }}">
                                 @foreach($list as $r)                                
                                         @php
                                             $y = $r[0]/20;
@@ -87,13 +91,24 @@
                                 @foreach($list250 as $i => $row)
                                     @foreach($row as $j => $col)
                                         @php
-                                            $y = $i*12.5;
-                                            $x = $j*12.5;
+                                            if ($j == 7)
+                                                continue;
+                                            $t = 0.3;
+                                            $s = 0.3;
+                                            $y = $i*12.5+$t+$s;
+                                            $x = $j*12.5+$t+$s;
+                                            $h = 12.5-2*$t-2*($s-0.1);
+                                            if (!empty($listFix))
+                                                $color = $listFix[$i][$j];
+                                            else
+                                                $color = ($col >= 61?2:($col >= 25?1:0));
                                         @endphp
-                                        @if ($col >= 61)
-                                        <rect x="{{ $x }}" y="{{ $y }}" width="12.5" height="12.5" fill="none" stroke="rgba(255, 0, 0, 1)" stroke-width="0.3"></rect>
-                                        @elseif ($col >= 25)
-                                        <rect x="{{ $x }}" y="{{ $y }}" width="12.5" height="12.5" fill="none" stroke="rgba(255, 255, 0, 0.7)" stroke-width="0.2"></rect>
+                                        @if ($color == 2)
+                                        <rect x="{{ $x }}" y="{{ $y }}" width="{{ $h }}" height="{{ $h }}" fill="rgba(255, 0, 0, 0.1)" stroke="rgba(255, 0, 0, 0.7)" stroke-width="{{ $s }}" onclick="doRectClick(this)" posi="{{ $i }}" posj="{{ $j }}"></rect>
+                                        @elseif ($color == 1)
+                                        <rect x="{{ $x }}" y="{{ $y }}" width="{{ $h }}" height="{{ $h }}" fill="rgba(255, 255, 0, 0.1)" stroke="rgba(255, 255, 0, 0.7)" stroke-width="{{ $s }}" onclick="doRectClick(this)" posi="{{ $i }}" posj="{{ $j }}"></rect>
+                                        @else
+                                        <rect x="{{ $x }}" y="{{ $y }}" width="{{ $h }}" height="{{ $h }}" fill="rgba(255, 255, 255, 0)" stroke="rgba(255, 255, 255, 0)" stroke-width="{{ $s }}" onclick="doRectClick(this)" posi="{{ $i }}" posj="{{ $j }}"></rect>
                                         @endif
                                     @endforeach    
                                 @endforeach

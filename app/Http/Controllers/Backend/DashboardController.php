@@ -151,9 +151,18 @@ class DashboardController extends Controller
     public function phanTich(Request $request, string $folder = "", int $page = 0, int $display_img = 2)
     {
         $org_foler = $folder;
+        $directory = "/public/Tasks/";
 
         if ($request->isMethod('post')) {
             $input = $request->input();
+
+            if(isset($input['save'])) {
+                $jsondata = $input['save'];
+                $arr = json_decode($jsondata, true);
+                foreach ($arr as $key => $value) {
+                    Storage::put($directory.$key.".fix.json", json_encode($value));
+                }
+            }
 
             if(isset($input['display'])) {
                 $new_display_img = $input['new_display_img'];
@@ -170,8 +179,6 @@ class DashboardController extends Controller
                 return redirect()->route('admin.phan-tich', ['folder' => $org_foler, 'page' => $new_page, 'display_img'=>$display_img]);
             }
         }
-
-        $directory = "/public/Tasks/";
         
         $directories = Storage::directories($directory);
         $fl_array = array();
@@ -202,6 +209,7 @@ class DashboardController extends Controller
         $fl_array1 = array();
         $list_array = array();
         $list250_array = array();
+        $listFix_array = array();
         $pages = array();
         rsort($fl_array);
         //var_dump($fl_array); die;
@@ -214,15 +222,19 @@ class DashboardController extends Controller
                 $list250_json = Storage::get($value.".json");
             else
                 $list250_json = null;
+            if (Storage::exists($value.".fix.json"))
+                $listFix_json = Storage::get($value.".fix.json");
+            else
+                $listFix_json = null;
             $list_array[$ii] = json_decode($list_json, true);
             $list250_array[$ii] = json_decode($list250_json, true);
+            $listFix_array[$ii] = json_decode($listFix_json, true);
             $fl_array1[$ii] = str_replace("public/", "storage/", $value);
             if ($ii % $display_img == 0)
                 $pages[] = "Trang ".($ii/$display_img+1);
             $ii++;
         }
 
-        
         $img_total = count($fl_array1);
         $page_total = intdiv($img_total, $display_img);
         $img_num1 = $page*$display_img;
@@ -234,6 +246,7 @@ class DashboardController extends Controller
         $fl_array = array_slice($fl_array1, $img_num1, $img_num2-$img_num1+1);
         $list_array = array_slice($list_array, $img_num1, $img_num2-$img_num1+1);
         $list250_array = array_slice($list250_array, $img_num1, $img_num2-$img_num1+1);
+        $listFix_array = array_slice($listFix_array, $img_num1, $img_num2-$img_num1+1);
 
         $roads = array();
         $road['ma_loai_duong'] = substr($items[1], 0, 1);
@@ -258,6 +271,7 @@ class DashboardController extends Controller
             ->withImgNum2($img_num2)
             ->withListArray($list_array)
             ->withList250Array($list250_array)
+            ->withListFixArray($listFix_array)
             ->withPages($pages)
             ->withPage($page)
             ->withDisplayImg($display_img);
