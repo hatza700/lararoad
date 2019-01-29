@@ -182,9 +182,21 @@ class DashboardController extends Controller
             }
         }
 
+        if ($request->isMethod('post')) {
+            $input = $request->input();
+
+            if(isset($input['next'])){
+                $new_page = $input['next'];
+                if ($new_page >= count($fl_array))
+                    $new_page = count($fl_array)-1;
+                return redirect()->route('admin.phan-tich', ['folder' => $org_foler, 'page' => $new_page]);
+            }
+        }
+
         $ii = 0;
         $fl_array1 = array();
         $list_array = array();
+        $list250_array = array();
         $pages = array();
         rsort($fl_array);
         //var_dump($fl_array); die;
@@ -193,22 +205,16 @@ class DashboardController extends Controller
                 $list_json = Storage::get($value.".list.json");
             else
                 $list_json = null;
+            if (Storage::exists($value.".json"))
+                $list250_json = Storage::get($value.".json");
+            else
+                $list250_json = null;
             $list_array[$ii] = json_decode($list_json, true);
+            $list250_array[$ii] = json_decode($list250_json, true);
             $fl_array1[$ii] = str_replace("public/", "storage/", $value);
             if ($ii % $display_img == 0)
                 $pages[] = "Trang ".($ii/$display_img+1);
             $ii++;
-        }
-
-        if ($request->isMethod('post')) {
-            $input = $request->input();
-
-            if(isset($input['next'])){
-                $new_page = $input['next'];
-                if ($new_page >= count($pages))
-                    $new_page = count($pages)-1;
-                return redirect()->route('admin.phan-tich', ['folder' => $org_foler, 'page' => $new_page]);
-            }
         }
 
         
@@ -222,6 +228,7 @@ class DashboardController extends Controller
 
         $fl_array = array_slice($fl_array1, $img_num1, $img_num2-$img_num1+1);
         $list_array = array_slice($list_array, $img_num1, $img_num2-$img_num1+1);
+        $list250_array = array_slice($list250_array, $img_num1, $img_num2-$img_num1+1);
 
         $roads = array();
         $road['ma_loai_duong'] = substr($items[1], 0, 1);
@@ -245,6 +252,7 @@ class DashboardController extends Controller
             ->withImgNum1($img_num1)
             ->withImgNum2($img_num2)
             ->withListArray($list_array)
+            ->withList250Array($list250_array)
             ->withPages($pages)
             ->withPage($page);
     }

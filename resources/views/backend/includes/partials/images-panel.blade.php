@@ -43,6 +43,7 @@
             @foreach($imageFiles as $key => $img_url)
                 @php
                     $list = $listArray[$key];
+                    $list250 = $list250Array[$key];
                 @endphp
                 <div class="img-container p-0">
                     <svg viewBox="0 0 100 37.5" xmlns="http://www.w3.org/2000/svg">
@@ -64,8 +65,21 @@
                                         <rect x="{{ $x }}" y="{{ $y }}" width="5" height="5" fill="none" stroke="rgba(0, 255, 0, 0.7)" stroke-width="0.15"></rect>
                                     
                                 @endforeach
+                                @foreach($list250 as $i => $row)
+                                    @foreach($row as $j => $col)
+                                        @php
+                                            $y = $i*12.5;
+                                            $x = $j*12.5;
+                                        @endphp
+                                        @if ($col >= 61)
+                                        <rect x="{{ $x }}" y="{{ $y }}" width="12.5" height="12.5" fill="none" stroke="rgba(255, 0, 0, 1)" stroke-width="0.3"></rect>
+                                        @elseif ($col >= 25)
+                                        <rect x="{{ $x }}" y="{{ $y }}" width="12.5" height="12.5" fill="none" stroke="rgba(255, 255, 0, 0.7)" stroke-width="0.2"></rect>
+                                        @endif
+                                    @endforeach    
+                                @endforeach
                               </g>
-                              @endif
+                            @endif
                     </svg>
                 </div>
             @endforeach    
