@@ -1,24 +1,43 @@
 <div class="card">
         <div class="card-header">                        
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     @php
                         $file1 = explode('/', $imageFiles[0]);
                         $file1 = $file1[count($file1)-1];
                         $file2 = explode('/', $imageFiles[count($imageFiles)-1]);
                         $file2 = $file2[count($file2)-1];
                     @endphp
-                    <i class="fas fa-code"></i> Phân tích chi tiết: {{ $file1 }} - {{ $file2 }}
+                    <i class="fas fa-code"></i> {{ $file1 }} - {{ $file2 }}
                 </div>
-                <div class="col-sm-6">                    
+                <div class="col-sm-9">                    
                     <div class="row">
-                        <div class="col-sm-3 p-1">
+                        <div class="col-sm-4">
+                            {{ html()->form('POST', url()->current())->class('row')->open() }}
+                                <div class="col-sm-5 p-1">
+                                    {{ html()->input()->name('display')->type('hidden')->value(1) }}
+                                    {{ html()->button('Hiển thị')->attribute('name', 'display')->type('submit')->value(1)->class('btn btn-primary btn-block') }}
+                                </div>
+                                <div class="col-sm-5 p-1">
+                                    @php
+                                        $arr1 = array_merge(array(2), range(10, 50, 10));
+                                        $arr2 = array_combine($arr1, $arr1);
+                                    @endphp
+                                    {{ html()->select('new_display_img', $arr2, $displayImg)->class('form-control') }}
+                                </div>
+                                <div class="col-sm-2 p-0"> 
+                                    ảnh / tr.
+                                </div>                       
+                                
+                            {{ html()->form()->close() }}
+                        </div>                        
+                        <div class="col-sm-2 p-1">
                             {{ html()->form('POST', url()->current())->open() }}
                             {{ html()->input()->name('prev')->type('hidden')->value($page-1) }}
                             {{ html()->button('Trước')->type('submit')->value(1)->class('btn btn-primary btn-block') }}                            
                             {{ html()->form()->close() }}
                         </div>                        
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             {{ html()->form('POST', url()->current())->class('row')->open() }}
                                 <div class="col-sm-8 p-1">
                                     {{ html()->select('new_page', $pages, $page)->class('form-control') }}
@@ -29,7 +48,7 @@
                                 </div>
                             {{ html()->form()->close() }}
                         </div>
-                        <div class="col-sm-3 p-1">
+                        <div class="col-sm-2 p-1">
                             {{ html()->form('POST', url()->current())->open() }}
                             {{ html()->input()->name('next')->type('hidden')->value($page+1) }}
                             {{ html()->button('Sau')->type('submit')->value(1)->class('btn btn-primary btn-block') }}
@@ -39,7 +58,7 @@
                 </div>            
             </div>
         </div>
-        <div class="card-body" style="overflow:auto; max-height:1000px">
+        <div class="card-body" style="overflow:auto; max-height:10000px">
             @foreach($imageFiles as $key => $img_url)
                 @php
                     $list = $listArray[$key];

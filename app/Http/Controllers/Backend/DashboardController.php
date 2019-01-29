@@ -148,21 +148,26 @@ class DashboardController extends Controller
         return redirect()->route('admin.phan-tich-moi', ['folder' => $folder1]);
     }
 
-    public function phanTich(Request $request, string $folder = "", int $page = 0)
+    public function phanTich(Request $request, string $folder = "", int $page = 0, int $display_img = 2)
     {
         $org_foler = $folder;
-        $display_img = 2;
 
         if ($request->isMethod('post')) {
             $input = $request->input();
+
+            if(isset($input['display'])) {
+                $new_display_img = $input['new_display_img'];
+                return redirect()->route('admin.phan-tich', ['folder' => $org_foler, 'page' => 0, 'display_img'=>$new_display_img]);
+            }
+
             if(isset($input['goto'])) {
-                return redirect()->route('admin.phan-tich', ['folder' => $org_foler, 'page' => $input['new_page']]);
+                return redirect()->route('admin.phan-tich', ['folder' => $org_foler, 'page' => $input['new_page'], 'display_img'=>$display_img]);
             }
             if(isset($input['prev'])){
                 $new_page = $input['prev'];
                 if ($new_page < 0)
                     $new_page = 0;
-                return redirect()->route('admin.phan-tich', ['folder' => $org_foler, 'page' => $new_page]);
+                return redirect()->route('admin.phan-tich', ['folder' => $org_foler, 'page' => $new_page, 'display_img'=>$display_img]);
             }
         }
 
@@ -187,9 +192,9 @@ class DashboardController extends Controller
 
             if(isset($input['next'])){
                 $new_page = $input['next'];
-                if ($new_page >= count($fl_array))
-                    $new_page = count($fl_array)-1;
-                return redirect()->route('admin.phan-tich', ['folder' => $org_foler, 'page' => $new_page]);
+                if ($new_page >= count($fl_array)/$display_img)
+                    $new_page = ceil(count($fl_array)/$display_img)-1;
+                return redirect()->route('admin.phan-tich', ['folder' => $org_foler, 'page' => $new_page, 'display_img'=>$display_img]);
             }
         }
 
@@ -254,7 +259,8 @@ class DashboardController extends Controller
             ->withListArray($list_array)
             ->withList250Array($list250_array)
             ->withPages($pages)
-            ->withPage($page);
+            ->withPage($page)
+            ->withDisplayImg($display_img);
     }
 
 }
