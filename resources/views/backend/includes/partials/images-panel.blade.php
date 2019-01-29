@@ -75,7 +75,6 @@
                         <image href="/{{ $img_url }}" x="0" y="0" height="100%"/>
                         <rect x="87.5" y="0" width="12.5" height="37.5" fill="white"></rect>
                         <rect width="100%" height="100%" fill="url(#smallGrid)" />
-                            @if ($list)
                                 @php
                                     $urls = explode('/', $img_url, 3);
                                 @endphp
@@ -113,10 +112,9 @@
                                     @endforeach    
                                 @endforeach
                               </g>
-                            @endif
                     </svg>
                 </div>
-            @endforeach    
+                @endforeach    
         </div>
         <div class="card-header">                        
             <div class="row">
