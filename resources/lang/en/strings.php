@@ -28,6 +28,7 @@ return [
             'title'   => 'Dashboard',
             'welcome' => 'Welcome',
             'phan-tich-moi' => 'Phân tích mới',
+            'phan-tich' => 'Phân tích',
             'ds-phan-tich' => 'Danh sách kết quả phân tích'
         ],
 
