@@ -104,7 +104,8 @@ class DashboardController extends Controller
             $road['chieu_duong'] = $arr['UpDown'];
             $road['chieu_dai'] = $arr['To']-$arr['From'];
             $road['action_buttons'] ='<a href="'.route('admin.phan-tich-moi', $folder_names[2]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info"><i class="fas fa-eye"></i></a>'.
-            '<a href="'.route('admin.phan-tich', $folder_names[2]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info">Chi tiết</a>';
+            '<a href="'.route('admin.phan-tich', $folder_names[2]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info">Chi tiết</a>'.
+            '<a href="'.route('admin.thuc-hien-phan-tich', $folder_names[2]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info">Chạy phân tích nứt</a>';;
             $roads[] = $road;
         }
         return view('backend.ds-phan-tich')
@@ -136,7 +137,7 @@ class DashboardController extends Controller
             $ii++;
         }
 
-        $process = new Process('python ../crack_predict3.py --model ../ml_model/Model_new_5.h5 --image_path '.str_replace("public/", "storage/", $folder));
+        $process = new Process('/home/cong/venv/bin/python ../crack_predict4.py --model ../ml_model/Model_new_5.h5 --image_path '.str_replace("public/", "storage/", $folder));
         $process->setTimeout(36000);
         $process->run();
         if (!$process->isSuccessful()) {
@@ -150,6 +151,7 @@ class DashboardController extends Controller
     public function phanTich(Request $request, string $folder = "", int $page = 0)
     {
         $org_foler = $folder;
+        $display_img = 2;
 
         if ($request->isMethod('post')) {
             $input = $request->input();
@@ -193,8 +195,8 @@ class DashboardController extends Controller
                 $list_json = null;
             $list_array[$ii] = json_decode($list_json, true);
             $fl_array1[$ii] = str_replace("public/", "storage/", $value);
-            if ($ii % 3 == 0)
-                $pages[] = "Trang ".($ii/3+1);
+            if ($ii % $display_img == 0)
+                $pages[] = "Trang ".($ii/$display_img+1);
             $ii++;
         }
 
@@ -211,9 +213,9 @@ class DashboardController extends Controller
 
         
         $img_total = count($fl_array1);
-        $page_total = intdiv($img_total, 3);
-        $img_num1 = $page*3;
-        $img_num2 = $img_num1 + 2;
+        $page_total = intdiv($img_total, $display_img);
+        $img_num1 = $page*$display_img;
+        $img_num2 = $img_num1 + $display_img-1;
         if ($img_num2 > $img_total)
             $img_num2 = $img_total;
 

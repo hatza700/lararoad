@@ -232,10 +232,10 @@ while len(filelist) > 0:
 	json.dump(r_matrix, f)
 	f.close()
 
-	out_file = filename + ".50.json"
-	f = open(out_file, 'w')
-	json.dump(c_matrix, f)
-	f.close()
+	#out_file = filename + ".50.json"
+	#f = open(out_file, 'w')
+	#json.dump(c_matrix, f)
+	#f.close()
 	
 	out_file = filename + ".list.json"
 	f = open(out_file, 'w')

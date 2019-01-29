@@ -44,7 +44,7 @@
                 @php
                     $list = $listArray[$key];
                 @endphp
-                <div class="container img-container p-0">
+                <div class="img-container p-0">
                     <svg viewBox="0 0 100 37.5" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <pattern id="smallGrid" width="0.125" height="0.333333" patternUnits="objectBoundingBox">
@@ -52,6 +52,7 @@
                             </pattern>
                         </defs>
                         <image href="/{{ $img_url }}" x="0" y="0" height="100%"/>
+                        <rect x="87.5" y="0" width="12.5" height="37.5" fill="white"></rect>
                         <rect width="100%" height="100%" fill="url(#smallGrid)" />
                             @if ($list)
                               <g>
