@@ -73,7 +73,7 @@ class DashboardController extends Controller
         $csv1 = str_getcsv($lines[0]);
         $csv2 = str_getcsv($lines[1]);
         $arr = array_combine($csv1, $csv2);
-        $road['chieu_duong'] = $arr['UpDown'];
+        $road['chieu_duong'] = $arr['Direction'];
         $road['chieu_dai'] = $arr['To']-$arr['From'];
         
         return view('backend.phan-tich-moi')
@@ -101,7 +101,7 @@ class DashboardController extends Controller
             $csv1 = str_getcsv($lines[0]);
             $csv2 = str_getcsv($lines[1]);
             $arr = array_combine($csv1, $csv2);
-            $road['chieu_duong'] = $arr['UpDown'];
+            $road['chieu_duong'] = $arr['Direction'];
             $road['chieu_dai'] = $arr['To']-$arr['From'];
             $road['action_buttons'] ='<a href="'.route('admin.phan-tich-moi', $folder_names[2]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info"><i class="fas fa-eye"></i></a>'.
             '<a href="'.route('admin.phan-tich', $folder_names[2]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info">Chi tiết</a>'.
@@ -246,7 +246,7 @@ class DashboardController extends Controller
         $csv1 = str_getcsv($lines[0]);
         $csv2 = str_getcsv($lines[1]);
         $arr = array_combine($csv1, $csv2);
-        $road['chieu_duong'] = $arr['UpDown'];
+        $road['chieu_duong'] = $arr['Direction'];
         $road['chieu_dai'] = $arr['To']-$arr['From'];
         
         return view('backend.phan-tich')
