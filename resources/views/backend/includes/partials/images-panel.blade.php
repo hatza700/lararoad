@@ -103,5 +103,54 @@
                 </div>
             @endforeach    
         </div>
+        <div class="card-header">                        
+            <div class="row">
+                <div class="col-sm-3">
+                    <i class="fas fa-code"></i> {{ $file1 }} - {{ $file2 }}
+                </div>
+                <div class="col-sm-9">                    
+                    <div class="row">
+                        <div class="col-sm-4">
+                            {{ html()->form('POST', url()->current())->class('row')->open() }}
+                                <div class="col-sm-5 p-1">
+                                    {{ html()->input()->name('display')->type('hidden')->value(1) }}
+                                    {{ html()->button('Hiển thị')->attribute('name', 'display')->type('submit')->value(1)->class('btn btn-primary btn-block') }}
+                                </div>
+                                <div class="col-sm-5 p-1">
+                                    {{ html()->select('new_display_img', $arr2, $displayImg)->class('form-control') }}
+                                </div>
+                                <div class="col-sm-2 p-0"> 
+                                    ảnh / tr.
+                                </div>                       
+                                
+                            {{ html()->form()->close() }}
+                        </div>                        
+                        <div class="col-sm-2 p-1">
+                            {{ html()->form('POST', url()->current())->open() }}
+                            {{ html()->input()->name('prev')->type('hidden')->value($page-1) }}
+                            {{ html()->button('Trước')->type('submit')->value(1)->class('btn btn-primary btn-block') }}                            
+                            {{ html()->form()->close() }}
+                        </div>                        
+                        <div class="col-sm-4">
+                            {{ html()->form('POST', url()->current())->class('row')->open() }}
+                                <div class="col-sm-8 p-1">
+                                    {{ html()->select('new_page', $pages, $page)->class('form-control') }}
+                                </div>                         
+                                <div class="col-sm-4 p-1">
+                                    {{ html()->input()->name('goto')->type('hidden')->value(1) }}
+                                    {{ html()->button('Tới')->attribute('name', 'goto')->type('submit')->value(1)->class('btn btn-primary btn-block') }}
+                                </div>
+                            {{ html()->form()->close() }}
+                        </div>
+                        <div class="col-sm-2 p-1">
+                            {{ html()->form('POST', url()->current())->open() }}
+                            {{ html()->input()->name('next')->type('hidden')->value($page+1) }}
+                            {{ html()->button('Sau')->type('submit')->value(1)->class('btn btn-primary btn-block') }}
+                            {{ html()->form()->close() }}
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </div>
 
 </div>
