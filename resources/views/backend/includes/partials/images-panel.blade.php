@@ -57,8 +57,8 @@
                               <g>
                                 @foreach($list as $r)                                
                                         @php
-                                            $y = bcdiv($r[0], 20, 4);
-                                            $x = bcdiv($r[1], 20, 4);
+                                            $y = $r[0]/20;
+                                            $x = $r[1]/20;
                                         @endphp
                                         <rect x="{{ $x }}" y="{{ $y }}" width="5" height="5" fill="none" stroke="rgba(0, 255, 0, 0.7)" stroke-width="0.15"></rect>
                                     
