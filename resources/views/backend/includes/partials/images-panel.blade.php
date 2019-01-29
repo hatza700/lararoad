@@ -58,7 +58,7 @@
                 </div>            
             </div>
         </div>
-        <div class="card-body" style="overflow:auto; max-height:10000px">
+        <div class="card-body" style="overflow:auto; max-height:50000px">
             @foreach($imageFiles as $key => $img_url)
                 @php
                     $list = $listArray[$key];
