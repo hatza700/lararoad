@@ -12,4 +12,5 @@ Route::post('phan-tich-moi/{folder?}', [DashboardController::class, 'phanTichMoi
 Route::get('phan-tich/{folder?}/{page?}/{display_img?}', [DashboardController::class, 'phanTich'])->name('phan-tich');
 Route::post('phan-tich/{folder?}/{page?}/{display_img?}', [DashboardController::class, 'phanTich'])->name('phan-tich');
 Route::get('thuc-hien-phan-tich/{folder?}', [DashboardController::class, 'thucHienPhanTich'])->name('thuc-hien-phan-tich');
+Route::get('xuat-ket-qua/{folder?}', [DashboardController::class, 'xuatKetQua'])->name('xuat-ket-qua');
 Route::get('ds-phan-tich', [DashboardController::class, 'dsPhanTich'])->name('ds-phan-tich');

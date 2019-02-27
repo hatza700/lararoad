@@ -82,9 +82,9 @@
                         <div class="card-header">Kết quả phân tích trên toàn đoạn</div>
                         <div class="card-body">
                             <p class="card-text">
-                                    Tỷ lệ nứt trung bình: <b>{{ $rateArray[0] }}%</b> <br/>
-                                    Tỷ lệ ô nứt 100%: <b>{{ $rateArray[1] }}%</b> <br/>
-                                    Tỷ lệ ô nứt 65%: <b>{{ $rateArray[2] }}%</b> <br/>
+                                    Tỷ lệ nứt trung bình: <b>{{ number_format($rateArray[0], 2) }}%</b> <br/>
+                                    Tỷ lệ ô nứt 100%: <b>{{ number_format($rateArray[1], 2) }}%</b> <br/>
+                                    Tỷ lệ ô nứt 65%: <b>{{ number_format($rateArray[2], 2) }}%</b> <br/>
                             </p>                            
                         </div>
                     </div>
@@ -93,9 +93,9 @@
                         <div class="card-header">Kết quả phân tích trên phân đoạn đang hiển thị</div>
                         <div class="card-body">
                             <p class="card-text">
-                                    Tỷ lệ nứt trung bình: <b>{{ $rateArray1[0] }}%</b> <br/>
-                                    Tỷ lệ ô nứt 100%: <b>{{ $rateArray1[1] }}%</b> <br/>
-                                    Tỷ lệ ô nứt 65%: <b>{{ $rateArray1[2] }}%</b> <br/>
+                                    Tỷ lệ nứt trung bình: <b>{{ number_format($rateArray[0], 2) }}%</b> <br/>
+                                    Tỷ lệ ô nứt 100%: <b>{{ number_format($rateArray[1], 2) }}%</b> <br/>
+                                    Tỷ lệ ô nứt 65%: <b>{{ number_format($rateArray[2], 2) }}%</b> <br/>
                             </p>                            
                         </div>
                     </div>
@@ -116,7 +116,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <a href="{{ route('frontend.user.account')}}" class="btn btn-primary btn-block" style="margin-bottom:4px;white-space: normal;min-height: 50px">
+                                    <a href="{{ route('admin.xuat-ket-qua', $folder)}}" class="btn btn-primary btn-block" style="margin-bottom:4px;white-space: normal;min-height: 50px">
                                         @lang('Xuất kết quả')
                                     </a>
                                 </div><!--col-->
@@ -124,7 +124,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <a href="{{ route('frontend.user.account')}}" class="btn btn-primary btn-block" style="margin-bottom:4px;white-space: normal;min-height: 50px">
+                                    <a href="{{ route('admin.ds-phan-tich') }}" class="btn btn-primary btn-block" style="margin-bottom:4px;white-space: normal;min-height: 50px">
                                         @lang('Quay lại phân tích mới')
                                     </a>
                                 </div><!--col-->
@@ -132,7 +132,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <a href="{{ route('frontend.user.account')}}" class="btn btn-primary btn-block" style="margin-bottom:4px;white-space: normal;min-height: 50px">
+                                    <a href="{{ route('admin.ds-phan-tich') }}" class="btn btn-primary btn-block" style="margin-bottom:4px;white-space: normal;min-height: 50px">
                                         @lang('Kết thúc')
                                     </a>
                                 </div><!--col-->

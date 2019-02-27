@@ -148,6 +148,84 @@ class DashboardController extends Controller
         return redirect()->route('admin.phan-tich-moi', ['folder' => $folder1]);
     }
 
+    public function xuatKetQua(string $folder = "")
+    {
+        $directory = "/public/Tasks/";
+        //$files = Storage::files($directory);
+        $directories = Storage::directories($directory);
+        $fl_array = array();
+        $folder1 = $folder;
+        foreach ($directories as $key => $fol) {
+            $items = explode('_', $fol);
+            $folder_names = explode('/', $fol, 3);
+            $directories[$key] = $folder_names[2];
+            if ($folder_names[2] === $folder || ($key == count($directories)-1 && empty($fl_array))) {
+                $files = Storage::files($fol);
+                $fl_array = preg_grep("/[.](jpg|JPG|JPEG)$/", $files);
+                $folder = $fol;
+                $folder_key = $key;
+            }
+        }
+
+        $ii = 0;
+        $fl_array1 = array();
+        $list_array = array();
+        $list250_array = array();
+        $listFix_array = array();
+
+        rsort($fl_array);
+
+        foreach ($fl_array as $key => $value) {
+            if (Storage::exists($value.".list.json"))
+                $list_json = Storage::get($value.".list.json");
+            else
+                $list_json = null;
+            if (Storage::exists($value.".json"))
+                $list250_json = Storage::get($value.".json");
+            else
+                $list250_json = null;
+            if (Storage::exists($value.".fix.json"))
+                $listFix_json = Storage::get($value.".fix.json");
+            else
+                $listFix_json = null;
+            $list_array[$ii] = json_decode($list_json, true);
+            $list250_array[$ii] = json_decode($list250_json, true);
+            $listFix_array[$ii] = json_decode($listFix_json, true);
+            $fl_array1[$ii] = str_replace("public/", "storage/", $value);
+            
+            $ii++;
+        }
+
+        foreach ($list250_array as $ii => $list250) {
+            $listFix = $listFix_array[$ii];
+            if (empty($listFix)) {
+                $listFix_array[$ii] = $list250;
+                foreach ($list250 as $i => $row) {                    
+                    foreach ($row as $j => $col) {
+                        $color = ($col >= 61?2:($col >= 25?1:0));
+                        $listFix_array[$ii][$i][$j] = $color;
+                    }
+                }
+            }                
+        }
+
+        $path = storage_path().'/app/'.$folder.'/output.csv';
+
+        $fp = fopen($path, 'w');
+        foreach ($listFix_array as $ii => $listFix) {
+            foreach ($listFix as $i => $row) {
+                fputcsv($fp, $row);                    
+            }
+        }
+        fclose($fp);
+
+        $headers = [
+              'Content-Type' => 'text/csv',
+           ];
+
+        return response()->download($path, $folder1.'.csv', $headers);
+    }
+
     public function phanTich(Request $request, string $folder = "", int $page = 0, int $display_img = 2)
     {
         $org_foler = $folder;
@@ -282,26 +360,30 @@ class DashboardController extends Controller
             ->withDisplayImg($display_img)
             ->withAllImgCount($allImgCount)
             ->withRateArray($rateArray)
-            ->withRateArray1($rateArray1);
+            ->withRateArray1($rateArray1)
+            ->withFolder($org_foler);
     }
 
-    protected function calcCrack($list250, $listFix) {
+    protected function calcCrack($arr250, $arrFix) {
         $sum = 0.0;
         $sum100 = 0.0;
         $sum65 = 0.0;
-        $count = count($list250);
-        foreach ($list250 as $i => $row) {
-            foreach ($row as $j => $col) {
-                if (!empty($listFix))
-                    $color = $listFix[$i][$j];
-                else
-                    $color = ($col >= 61?2:($col >= 25?1:0));
-                $crack = ($color == 2?100:($col == 1?65:0));
-                $sum += $crack;
-                if ($crack == 100)
-                    $sum100 += $crack;
-                else
-                    $sum65 += $crack;
+        $count = count($arr250);
+        foreach ($arr250 as $ii => $list250) {
+            $listFix = $arrFix[$ii];
+            foreach ($list250 as $i => $row) {
+                foreach ($row as $j => $col) {
+                    if (!empty($listFix))
+                        $color = $listFix[$i][$j];
+                    else
+                        $color = ($col >= 61?2:($col >= 25?1:0));
+                    $crack = ($color == 2?100:($color == 1?65:0));
+                    $sum += $crack;
+                    if ($crack == 100)
+                        $sum100 += $crack;
+                    else
+                        $sum65 += $crack;
+                }
             }
         }
         $rate = $sum/$count/21;
