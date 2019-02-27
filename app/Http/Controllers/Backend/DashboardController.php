@@ -282,7 +282,7 @@ class DashboardController extends Controller
             ->withRateArray($rateArray);
     }
 
-    protect function calcCrack($list250, $listFix) {
+    protected function calcCrack($list250, $listFix) {
         $sum = 0;
         $sum100 = 0;
         $sum65 = 0;
