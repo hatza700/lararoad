@@ -244,7 +244,7 @@ class DashboardController extends Controller
             $img_num2 = $img_total;
 
 
-        $rateArray = calcCrack($list250_array, $listFix_array);
+        $rateArray = $this->calcCrack($list250_array, $listFix_array);
 
         $fl_array = array_slice($fl_array1, $img_num1, $img_num2-$img_num1+1);
         $list_array = array_slice($list_array, $img_num1, $img_num2-$img_num1+1);
