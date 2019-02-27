@@ -279,6 +279,7 @@ class DashboardController extends Controller
             ->withPage($page)
             ->withDisplayImg($display_img)
             ->withAllImgCount($allImgCount);
+            ->withRateArray($rateArray);
     }
 
     protect function calcCrack($list250, $listFix) {

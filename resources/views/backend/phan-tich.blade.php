@@ -82,11 +82,9 @@
                         <div class="card-header">Kết quả phân tích trên toàn đoạn</div>
                         <div class="card-body">
                             <p class="card-text">
-                                    Tỷ lệ nứt trung bình: 5% <br/>
-                                     ... <br/>
-                                    ... <br/>
-                                    ... <br/>
-                                    ... <br/>
+                                    Tỷ lệ nứt trung bình: {{ $rateArray[0] }}% <br/>
+                                    Tỷ lệ ô nứt 100% trung bình: {{ $rateArray[1] }}% <br/>
+                                    Tỷ lệ ô nứt 65% trung bình: {{ $rateArray[2] }}% <br/>
                             </p>                            
                         </div>
                     </div>
