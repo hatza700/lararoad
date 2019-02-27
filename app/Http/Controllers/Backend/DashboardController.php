@@ -212,6 +212,7 @@ class DashboardController extends Controller
         $listFix_array = array();
         $pages = array();
         rsort($fl_array);
+        $allImgCount = count($fl_array);
         //var_dump($fl_array); die;
         foreach ($fl_array as $key => $value) {
             if (Storage::exists($value.".list.json"))
@@ -242,6 +243,8 @@ class DashboardController extends Controller
         if ($img_num2 > $img_total)
             $img_num2 = $img_total;
 
+
+        $rateArray = calcCrack($list250_array, $listFix_array);
 
         $fl_array = array_slice($fl_array1, $img_num1, $img_num2-$img_num1+1);
         $list_array = array_slice($list_array, $img_num1, $img_num2-$img_num1+1);
@@ -274,7 +277,33 @@ class DashboardController extends Controller
             ->withListFixArray($listFix_array)
             ->withPages($pages)
             ->withPage($page)
-            ->withDisplayImg($display_img);
+            ->withDisplayImg($display_img)
+            ->withAllImgCount($allImgCount);
+    }
+
+    protect function calcCrack($list250, $listFix) {
+        $sum = 0;
+        $sum100 = 0;
+        $sum65 = 0;
+        $count = count($list250);
+        foreach ($list250 as $i => $row) {
+            foreach ($row as $j => $col) {
+                if (!empty($listFix))
+                    $color = $listFix[$i][$j];
+                else
+                    $color = ($col >= 61?2:($col >= 25?1:0));
+                $crack = ($color == 2?100:($col == 1?65:0));
+                $sum += $crack;
+                if ($crack == 100)
+                    $sum100 += $crack;
+                else
+                    $sum65 += $crack;
+            }
+        }
+        $rate = $sum/$count/21;
+        $rate100 = $sum100/$count/21;
+        $rate65 = $sum65/$count/21;
+        return array($rate, $rate100, $rate65);
     }
 
 }

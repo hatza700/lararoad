@@ -62,7 +62,7 @@
                                     <i class="fas fa-envelope"></i> Chiều đường:  {{ $road['chieu_duong'] == 0 ? "Phải" : "Trái" }}<br/>
                                     <i class="fas fa-envelope"></i> Mã làn đường: {{ $road['ma_thu_tu_lan'] }}<br/>
                                     <i class="fas fa-envelope"></i> Chiều dài đoạn: {{ $road['chieu_dai'].' km' }}<br/>
-                                    <i class="fas fa-envelope"></i> Tổng số ảnh: 300 ảnh<br/>
+                                    <i class="fas fa-envelope"></i> Tổng số ảnh: {{ $allImgCount }} ảnh<br/>
                                     <i class="fas fa-envelope"></i> Năm khảo sát TTMĐ: {{ $road['nam_khao_sat'] }}<br/>
                                 </small>
                             </p>                            
