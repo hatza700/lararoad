@@ -82,9 +82,20 @@
                         <div class="card-header">Kết quả phân tích trên toàn đoạn</div>
                         <div class="card-body">
                             <p class="card-text">
-                                    Tỷ lệ nứt trung bình: {{ $rateArray[0] }}% <br/>
-                                    Tỷ lệ ô nứt 100% trung bình: {{ $rateArray[1] }}% <br/>
-                                    Tỷ lệ ô nứt 65% trung bình: {{ $rateArray[2] }}% <br/>
+                                    Tỷ lệ nứt trung bình: <b>{{ $rateArray[0] }}%</b> <br/>
+                                    Tỷ lệ ô nứt 100%: <b>{{ $rateArray[1] }}%</b> <br/>
+                                    Tỷ lệ ô nứt 65%: <b>{{ $rateArray[2] }}%</b> <br/>
+                            </p>                            
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 bg-light">
+                        <div class="card-header">Kết quả phân tích trên phân đoạn đang hiển thị</div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                    Tỷ lệ nứt trung bình: <b>{{ $rateArray1[0] }}%</b> <br/>
+                                    Tỷ lệ ô nứt 100%: <b>{{ $rateArray1[1] }}%</b> <br/>
+                                    Tỷ lệ ô nứt 65%: <b>{{ $rateArray1[2] }}%</b> <br/>
                             </p>                            
                         </div>
                     </div>

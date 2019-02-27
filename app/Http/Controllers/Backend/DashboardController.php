@@ -251,6 +251,8 @@ class DashboardController extends Controller
         $list250_array = array_slice($list250_array, $img_num1, $img_num2-$img_num1+1);
         $listFix_array = array_slice($listFix_array, $img_num1, $img_num2-$img_num1+1);
 
+        $rateArray1 = $this->calcCrack($list250_array, $listFix_array);
+
         $roads = array();
         $road['ma_loai_duong'] = substr($items[1], 0, 1);
         $road['ma_tuyen_duong'] = substr($items[1], 1, 3);
@@ -279,7 +281,8 @@ class DashboardController extends Controller
             ->withPage($page)
             ->withDisplayImg($display_img)
             ->withAllImgCount($allImgCount)
-            ->withRateArray($rateArray);
+            ->withRateArray($rateArray)
+            ->withRateArray1($rateArray1);
     }
 
     protected function calcCrack($list250, $listFix) {
