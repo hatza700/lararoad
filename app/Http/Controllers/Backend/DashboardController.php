@@ -278,7 +278,7 @@ class DashboardController extends Controller
             ->withPages($pages)
             ->withPage($page)
             ->withDisplayImg($display_img)
-            ->withAllImgCount($allImgCount);
+            ->withAllImgCount($allImgCount)
             ->withRateArray($rateArray);
     }
 
