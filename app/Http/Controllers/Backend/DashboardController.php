@@ -283,9 +283,9 @@ class DashboardController extends Controller
     }
 
     protected function calcCrack($list250, $listFix) {
-        $sum = 0;
-        $sum100 = 0;
-        $sum65 = 0;
+        $sum = 0.0;
+        $sum100 = 0.0;
+        $sum65 = 0.0;
         $count = count($list250);
         foreach ($list250 as $i => $row) {
             foreach ($row as $j => $col) {
