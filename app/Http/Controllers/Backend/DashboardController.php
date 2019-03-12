@@ -363,7 +363,6 @@ class DashboardController extends Controller
             ->withAllImgCount($allImgCount)
             ->withRateArray($rateArray)
             ->withRateArray1($rateArray1)
-            ->withRoadNo($road_no)
             ->withFolder($org_foler);
     }
 
