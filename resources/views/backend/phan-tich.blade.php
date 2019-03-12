@@ -61,7 +61,7 @@
                                 <small>
                                     <i class="fas fa-envelope"></i> Chiều đường:  {{ $road['chieu_duong'] == 0 ? "Phải" : "Trái" }}<br/>
                                     <i class="fas fa-envelope"></i> Mã làn đường: {{ $road['ma_thu_tu_lan'] }}<br/>
-                                    <i class="fas fa-envelope"></i> Chiều dài đoạn: {{ $road['chieu_dai'].' km' }}<br/>
+                                <!--    <i class="fas fa-envelope"></i> Chiều dài đoạn: {{ $road['chieu_dai'].' km' }}<br/> -->
                                     <i class="fas fa-envelope"></i> Tổng số ảnh: {{ $allImgCount }} ảnh<br/>
                                     <i class="fas fa-envelope"></i> Năm khảo sát TTMĐ: {{ $road['nam_khao_sat'] }}<br/>
                                 </small>
@@ -83,8 +83,8 @@
                         <div class="card-body">
                             <p class="card-text">
                                     Tỷ lệ nứt trung bình: <b>{{ number_format($rateArray[0], 2) }}%</b> <br/>
-                                    Tỷ lệ ô nứt 100%: <b>{{ number_format($rateArray[1], 2) }}%</b> <br/>
-                                    Tỷ lệ ô nứt 65%: <b>{{ number_format($rateArray[2], 2) }}%</b> <br/>
+                                    Tỷ lệ nứt theo ô 100%: <b>{{ number_format($rateArray[1], 2) }}%</b> <br/>
+                                    Tỷ lệ nứt theo ô 60%: <b>{{ number_format($rateArray[2], 2) }}%</b> <br/>
                             </p>                            
                         </div>
                     </div>
@@ -93,9 +93,9 @@
                         <div class="card-header">Kết quả phân tích trên phân đoạn đang hiển thị</div>
                         <div class="card-body">
                             <p class="card-text">
-                                    Tỷ lệ nứt trung bình: <b>{{ number_format($rateArray[0], 2) }}%</b> <br/>
-                                    Tỷ lệ ô nứt 100%: <b>{{ number_format($rateArray[1], 2) }}%</b> <br/>
-                                    Tỷ lệ ô nứt 65%: <b>{{ number_format($rateArray[2], 2) }}%</b> <br/>
+                                    Tỷ lệ nứt trung bình: <b>{{ number_format($rateArray1[0], 2) }}%</b> <br/>
+                                    Tỷ lệ nứt theo ô 100%: <b>{{ number_format($rateArray1[1], 2) }}%</b> <br/>
+                                    Tỷ lệ nứt theo ô 60%: <b>{{ number_format($rateArray1[2], 2) }}%</b> <br/>
                             </p>                            
                         </div>
                     </div>
