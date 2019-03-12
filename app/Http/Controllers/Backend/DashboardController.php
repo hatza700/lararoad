@@ -75,6 +75,7 @@ class DashboardController extends Controller
         $arr = array_combine($csv1, $csv2);
         $road['chieu_duong'] = $arr['UpDown'];
         $road['chieu_dai'] = $arr['To']-$arr['From'];
+        $road['road_no'] = $arr['RoadNo'];
         
         return view('backend.phan-tich-moi')
             ->withRoad($road)
@@ -344,6 +345,7 @@ class DashboardController extends Controller
         $arr = array_combine($csv1, $csv2);
         $road['chieu_duong'] = $arr['UpDown'];
         $road['chieu_dai'] = $arr['To']-$arr['From'];
+        $road['road_no'] = $arr['RoadNo'];
         
         return view('backend.phan-tich')
             ->withRoad($road)
@@ -361,6 +363,7 @@ class DashboardController extends Controller
             ->withAllImgCount($allImgCount)
             ->withRateArray($rateArray)
             ->withRateArray1($rateArray1)
+            ->withRoadNo($road_no)
             ->withFolder($org_foler);
     }
 

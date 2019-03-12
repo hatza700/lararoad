@@ -25,7 +25,7 @@
                                     <div class="form-group">
                                         {{ html()->label(__('Tên quốc lộ'))->for('quoc_lo') }}
 
-                                        {{ html()->select('quoc_lo', ['1' => 'Quốc lộ 1', '020' => 'Quốc lộ 2'], $road['ma_tuyen_duong'])
+                                        {{ html()->select('quoc_lo', ['1' => 'Quốc lộ 1', '020' => 'Quốc lộ 2', $road['roadNo'] => 'Quốc lộ '.$road['roadNo']], $road['roadNo'])
                                             ->class('form-control') }}
                                     </div><!--form-group-->
                                 </div><!--col-->
