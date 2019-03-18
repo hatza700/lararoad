@@ -174,7 +174,7 @@ class DashboardController extends Controller
         $list250_array = array();
         $listFix_array = array();
 
-        rsort($fl_array);
+        sort($fl_array);
 
         foreach ($fl_array as $key => $value) {
             if (Storage::exists($value.".list.json"))
