@@ -204,7 +204,7 @@ class DashboardController extends Controller
                 foreach ($list250 as $i => $row) {                    
                     foreach ($row as $j => $col) {
                         $color = ($col >= 61?2:($col >= 25?1:0));
-                        $listFix_array[$ii][count($list250)-$i-1][$j] = $color;
+                        $listFix_array[$ii][$i][$j] = $color;
                     }
                 }
             }                
