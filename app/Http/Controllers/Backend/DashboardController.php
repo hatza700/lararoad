@@ -214,7 +214,7 @@ class DashboardController extends Controller
 
         $fp = fopen($path, 'w');
         foreach ($listFix_array as $ii => $listFix) {
-            foreach ($listFix as $i => $row) {
+            foreach (array_reverse($listFix) as $i => $row) {
                 fputcsv($fp, $row);                    
             }
         }
