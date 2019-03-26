@@ -9,10 +9,10 @@
                     <i class="nav-icon icon-speedometer"></i> @lang('menus.backend.sidebar.dashboard')
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link {{ active_class(Active::checkUriPattern('admin/phan-tich-moi')) }}" href="{{ route('admin.phan-tich-moi') }}">
                     <i class="nav-icon icon-speedometer"></i> @lang('menus.backend.sidebar.phan-tich-moi')
-                </a>
+                </a> -->
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ active_class(Active::checkUriPattern('admin/ds-phan-tich')) }}" href="{{ route('admin.ds-phan-tich') }}">

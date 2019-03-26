@@ -40,7 +40,7 @@
                                             ->class('form-control') }}
                                             <br/>
 
-                                        {{ html()->file('images_location')->accept("application/zip")->class('form-control') }}
+                                    <!--    {{ html()->file('images_location')->accept("application/zip")->class('form-control') }} -->
                                     </div><!--form-group-->
                                 </div><!--col-->
                             </div><!--row-->
