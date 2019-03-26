@@ -25,7 +25,7 @@
                             <th>@lang('Đoạn')</th>
                             <th>@lang('Chiều đường')</th>
                             <th>@lang('Làn đường')</th>
-                            <th>@lang('Chiều dài')</th>
+                        <!-- <th>@lang('Chiều dài')</th> -->
                             <th>@lang('Thao tác')</th>
                         </tr>
                         </thead>
@@ -37,7 +37,7 @@
                                 <td>{{ $road['ma_tuyen_nhanh'] }}</td>
                                 <td>{{ $road['chieu_duong'] == 0 ? "Phải" : "Trái" }}</td>
                                 <td>{{ $road['ma_thu_tu_lan'] }}</td>
-                                <td>{{ $road['chieu_dai'].' km' }}</td>
+                            <!--     <td>{{ $road['chieu_dai'].' km' }}</td> -->
                                 <td>{!! $road['action_buttons'] !!}</td>
                             </tr>
                             @endforeach
