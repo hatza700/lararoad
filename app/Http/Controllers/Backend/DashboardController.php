@@ -9,6 +9,9 @@ use ZipArchive;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Illuminate\Support\Facades\Input;
+use App\Repositories\Backend\Auth\RoleRepository;
+use App\Repositories\Backend\Auth\UserRepository;
+use App\Repositories\Backend\Auth\PermissionRepository;
 
 /**
  * Class DashboardController.
