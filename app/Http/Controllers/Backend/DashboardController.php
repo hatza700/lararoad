@@ -102,27 +102,30 @@ class DashboardController extends Controller
             ->withImageFiles($fl_array);
     }
 
-    public function dsPhanTich(Request $request, User $user)
+    public function dsPhanTich(Request $request, RoleRepository $roleRepository, User $user)
     {
         $directory = "/public/Tasks/";
         $directories = Storage::directories($directory);
         $roads = array();
         $grp = false;
+        //$roles = $roleRepository->get();
+        $user = $request->user();
         $roles = $user->roles->pluck('name')->all();
         foreach ($roles as $role)
         {
-            $str = $role->name;
+            $str = ucfirst($role);
             if ($str[0] == "G")
             {
-                $grp = substr($str, 0, 2);
+                $grp = strtoupper(substr($str, 0, 2));
                 break;
             }
         }
 
         foreach ($directories as $key => $folder) {
-            $str = substr($folder, 0, 2);
-            if (!$grp) {
-                if ($str == $grp) continue;
+            $str = strtoupper(substr($folder, 0, 2));
+
+            if ($grp != false) {
+                if ($str !== $grp) continue;                
             }
             $items = explode('_', $folder);
             $folder_names = explode('/', $folder, 3);
