@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
-
+use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Storage;
@@ -102,14 +102,14 @@ class DashboardController extends Controller
             ->withImageFiles($fl_array);
     }
 
-    public function dsPhanTich()
+    public function dsPhanTich(Request $request, User $user)
     {
         $directory = "/public/Tasks/";
         $directories = Storage::directories($directory);
         $roads = array();
         $grp = false;
-        $roles = $this->userRepository->get();
-        foreach ($roles->get() as $role)
+        $roles = $user->roles;
+        foreach ($roles as $role)
         {
             $str = $role->name;
             if ($str[0] == "G")
