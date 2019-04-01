@@ -89,7 +89,21 @@ class DashboardController extends Controller
         $directory = "/public/Tasks/";
         $directories = Storage::directories($directory);
         $roads = array();
+        $grp = false;
+        foreach ($this->roles()->get() as $role)
+        {
+            $str = $role->name;
+            if ($str[0] == "G")
+            {
+                $grp = substr($str, 0, 2);
+                break;
+            }
+        }
         foreach ($directories as $key => $folder) {
+            $str = substr($folder, 0, 2);
+            if (!$grp) {
+                if ($str == $grp) continue;
+            }
             $items = explode('_', $folder);
             $folder_names = explode('/', $folder, 3);
             $road['ma_loai_duong'] = substr($items[1], 0, 1);
