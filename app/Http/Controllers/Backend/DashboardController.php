@@ -108,7 +108,7 @@ class DashboardController extends Controller
         $directories = Storage::directories($directory);
         $roads = array();
         $grp = false;
-        $roles = $user->roles;
+        $roles = $user->roles->pluck('name')->all();
         foreach ($roles as $role)
         {
             $str = $role->name;
@@ -118,6 +118,7 @@ class DashboardController extends Controller
                 break;
             }
         }
+
         foreach ($directories as $key => $folder) {
             $str = substr($folder, 0, 2);
             if (!$grp) {
