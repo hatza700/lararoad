@@ -90,7 +90,7 @@ class DashboardController extends Controller
         $directories = Storage::directories($directory);
         $roads = array();
         $grp = false;
-        foreach ($this->roles()->get() as $role)
+        foreach ($this->user()->roles()->get() as $role)
         {
             $str = $role->name;
             if ($str[0] == "G")
