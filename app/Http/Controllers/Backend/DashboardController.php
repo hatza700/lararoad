@@ -116,17 +116,16 @@ class DashboardController extends Controller
             $str = ucfirst($role);
             if ($str[0] == "G")
             {
-                $grp = strtoupper(substr($str, 0, 2));
+                $grp = strtoupper('public/Tasks/'.substr($str, 0, 2));
                 break;
             }
         }
-
+        
         foreach ($directories as $key => $folder) {
-            $str = strtoupper(substr($folder, 0, 2));
-
+            $str = strtoupper(substr($folder, 0, 15));            
             if ($grp != false) {
                 if ($str !== $grp) continue;                
-            }
+            }            
             $items = explode('_', $folder);
             $folder_names = explode('/', $folder, 3);
             $road['ma_loai_duong'] = substr($items[1], 0, 1);
