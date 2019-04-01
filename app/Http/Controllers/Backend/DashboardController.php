@@ -16,6 +16,21 @@ use Illuminate\Support\Facades\Input;
 class DashboardController extends Controller
 {
     /**
+     * @var UserRepository
+     */
+    protected $userRepository;
+
+    /**
+     * UserController constructor.
+     *
+     * @param UserRepository $userRepository
+     */
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+    /**
      * @return \Illuminate\View\View
      */
     public function index()
@@ -90,7 +105,8 @@ class DashboardController extends Controller
         $directories = Storage::directories($directory);
         $roads = array();
         $grp = false;
-        foreach ($this->user()->roles()->get() as $role)
+        $roles = $this->$userRepository->get();
+        foreach ($roles->get() as $role)
         {
             $str = $role->name;
             if ($str[0] == "G")
