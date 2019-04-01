@@ -108,7 +108,7 @@ class DashboardController extends Controller
         $directories = Storage::directories($directory);
         $roads = array();
         $grp = false;
-        $roles = $this->$userRepository->get();
+        $roles = $this->userRepository->get();
         foreach ($roles->get() as $role)
         {
             $str = $role->name;
