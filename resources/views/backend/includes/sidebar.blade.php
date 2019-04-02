@@ -9,10 +9,17 @@
                     <i class="nav-icon icon-speedometer"></i> @lang('menus.backend.sidebar.dashboard')
                 </a>
             </li>
-            <!-- <li class="nav-item">
+            @if ($logged_in_user->isAdmin())
+            <li class="nav-item">
                 <a class="nav-link {{ active_class(Active::checkUriPattern('admin/phan-tich-moi')) }}" href="{{ route('admin.phan-tich-moi') }}">
                     <i class="nav-icon icon-speedometer"></i> @lang('menus.backend.sidebar.phan-tich-moi')
-                </a> -->
+                </a>
+            </li>
+            @endif
+            <li class="nav-item">
+                <a class="nav-link {{ active_class(Active::checkUriPattern('admin/ds-chua-phan-tich')) }}" href="{{ route('admin.ds-chua-phan-tich') }}">
+                    <i class="nav-icon icon-speedometer"></i> @lang('menus.backend.sidebar.ds-chua-phan-tich')
+                </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ active_class(Active::checkUriPattern('admin/ds-phan-tich')) }}" href="{{ route('admin.ds-phan-tich') }}">

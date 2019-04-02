@@ -29,7 +29,8 @@ return [
             'welcome' => 'Welcome',
             'phan-tich-moi' => 'Phân tích mới',
             'phan-tich' => 'Phân tích',
-            'ds-phan-tich' => 'Danh sách kết quả phân tích'
+            'ds-phan-tich' => 'Danh sách kết quả phân tích',
+            'ds-chua-phan-tich' => 'Danh sách chưa phân tích'
         ],
 
         'general' => [

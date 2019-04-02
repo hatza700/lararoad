@@ -47,6 +47,7 @@ return [
             'dashboard' => 'Dashboard',
             'phan-tich-moi' => 'Phân tích mới',
             'ds-phan-tich' => 'Danh sách kết quả phân tích',
+            'ds-chua-phan-tich' => 'Danh sách đoạn chưa phân tích',
             'general'   => 'General',
             'history'   => 'History',
             'system'    => 'System',

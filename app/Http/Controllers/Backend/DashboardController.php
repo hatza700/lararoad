@@ -125,7 +125,63 @@ class DashboardController extends Controller
             $str = strtoupper(substr($folder, 0, 15));            
             if ($grp != false) {
                 if ($str !== $grp) continue;                
-            }            
+            }
+            $files = Storage::files($folder);
+            $fl_array = preg_grep("/[.](json|JSON)$/", $files);  
+            if (empty($fl_array))   
+                continue;
+            $items = explode('_', $folder);
+            $folder_names = explode('/', $folder, 3);
+            $road['ma_loai_duong'] = substr($items[1], 0, 1);
+            $road['ma_tuyen_duong'] = substr($items[1], 1, 3);
+            $road['ma_tuyen_nhanh'] = substr($items[1], 4, 2);
+            $road['ma_thu_tu_lan'] = substr($items[2], 0);
+            $road['nam_khao_sat'] = substr($items[3], 0, 4);
+            $kp_contents = Storage::get($folder.'/'.'KP_LIST.CSV');
+            $lines = explode(PHP_EOL, $kp_contents);
+            $csv1 = str_getcsv($lines[0]);
+            $csv2 = str_getcsv($lines[1]);
+            $arr = array_combine($csv1, $csv2);
+            $road['chieu_duong'] = $arr['UpDown'];
+            $road['chieu_dai'] = $arr['To']-$arr['From'];
+            $road['action_buttons'] =
+            //'<a href="'.route('admin.phan-tich-moi', $folder_names[2]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info"><i class="fas fa-eye"></i></a>'.
+            '<a href="'.route('admin.phan-tich', $folder_names[2]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info">Chi tiết</a>'.
+            '<a href="'.route('admin.thuc-hien-phan-tich', $folder_names[2]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info">Chạy phân tích nứt</a>';;
+            $roads[] = $road;
+        }
+        return view('backend.ds-phan-tich')
+            ->withRoads($roads);
+    }
+
+    public function dsChuaPhanTich(Request $request, RoleRepository $roleRepository, User $user)
+    {
+        $directory = "/public/Tasks/";
+        $directories = Storage::directories($directory);
+        $roads = array();
+        $grp = false;
+        //$roles = $roleRepository->get();
+        $user = $request->user();
+        $roles = $user->roles->pluck('name')->all();
+        foreach ($roles as $role)
+        {
+            $str = ucfirst($role);
+            if ($str[0] == "G")
+            {
+                $grp = strtoupper('public/Tasks/'.substr($str, 0, 2));
+                break;
+            }
+        }
+        
+        foreach ($directories as $key => $folder) {
+            $str = strtoupper(substr($folder, 0, 15));            
+            if ($grp != false) {
+                if ($str !== $grp) continue;                
+            }
+            $files = Storage::files($folder);
+            $fl_array = preg_grep("/[.](json|JSON)$/", $files);  
+            if (!empty($fl_array))   
+                continue;       
             $items = explode('_', $folder);
             $folder_names = explode('/', $folder, 3);
             $road['ma_loai_duong'] = substr($items[1], 0, 1);
@@ -176,6 +232,7 @@ class DashboardController extends Controller
         }
 
         $process = new Process('/home/cong/venv/bin/python ../crack_predict4.py --model ../ml_model/Model_new_5.h5 --image_path '.str_replace("public/", "storage/", $folder));
+        //$process = new Process('python ../crack_predict4.py --model ../ml_model/Model_new_5.h5 --image_path '.str_replace("public/", "storage/", $folder));
         $process->setTimeout(36000);
         $process->run();
         if (!$process->isSuccessful()) {
