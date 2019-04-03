@@ -55,7 +55,8 @@ class DashboardController extends Controller
                 $zip->extractTo($destination);
                 $zip->close();
                 $folder = str_replace(".zip", "", $zip_file->getClientOriginalName());
-                return redirect()->route('admin.phan-tich', ['folder' => $folder]);
+                //return redirect()->route('admin.phan-tich', ['folder' => $folder]);
+                return redirect()->route('admin.ds-chua-phan-tich', ['folder' => $folder]);
             }
         } 
 
