@@ -55,7 +55,7 @@ class DashboardController extends Controller
                 $zip->extractTo($destination);
                 $zip->close();
                 $folder = str_replace(".zip", "", $zip_file->getClientOriginalName());
-                return redirect()->route('admin.thuc-hien-phan-tich', ['folder' => $folder]);
+                return redirect()->route('admin.phan-tich', ['folder' => $folder]);
             }
         } 
 
@@ -240,7 +240,7 @@ class DashboardController extends Controller
         }
         echo $process->getOutput();
 
-        return redirect()->route('admin.phan-tich-moi', ['folder' => $folder1]);
+        return redirect()->route('admin.phan-tich', ['folder' => $folder1]);
     }
 
     public function xuatKetQua(string $folder = "")
